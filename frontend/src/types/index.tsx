@@ -3,6 +3,12 @@ export interface Game {
   name: string;
   cover?: { url: string };
   genres: { id: number; name: string }[];
+  involved_companies: {
+    id: number;
+    company: { id: number; name: string };
+    developer: boolean;
+    publisher: boolean;
+  }[];
   platforms: { id: number; name: string }[];
   first_release_date: number;
   screenshots: { id: number; url: string }[];
