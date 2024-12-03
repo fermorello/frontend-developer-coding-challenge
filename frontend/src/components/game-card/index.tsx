@@ -8,12 +8,17 @@ import { PersistedGame } from '@/entities/PersistedGame';
 interface GameCardProps {
   game: PersistedGame;
   onRemove: (id: PersistedGame['id']) => void;
+  isRemoving?: boolean;
 }
 
-function GameCard({ game, onRemove }: GameCardProps) {
-  console.log(game);
+function GameCard({ game, onRemove, isRemoving = false }: GameCardProps) {
   return (
-    <div className="relative">
+    <div 
+      className={`
+        relative transition-all duration-300 ease-in-out
+        ${isRemoving ? 'opacity-0 scale-90 translate-y-4' : ''}
+      `}
+    >
       <Link href={`/${game.slug}`}>
         <Image
           width={114}
