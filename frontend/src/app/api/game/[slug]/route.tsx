@@ -8,16 +8,14 @@ export async function GET(
   const slug = (await params).slug;
   const [gameName] = slug.split('--');
   if (!gameName) {
-    return NextResponse.json(
-      { error: 'Invalid slug game' },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: 'Invalid slug game' }, { status: 400 });
   }
 
   const clientId = process.env.IGDB_CLIENT_ID;
   const accessToken = await generateApiToken();
+  const URL = process.env.IGDB_API_URL;
 
-  if (!clientId) {
+  if (!clientId || !URL) {
     return NextResponse.json(
       { error: 'Incomplete API Configuration.' },
       { status: 500 }
@@ -57,7 +55,7 @@ export async function GET(
   `;
 
   try {
-    const response = await fetch('https://api.igdb.com/v4/games', {
+    const response = await fetch(URL, {
       method: 'POST',
       headers: headers,
       body: body,

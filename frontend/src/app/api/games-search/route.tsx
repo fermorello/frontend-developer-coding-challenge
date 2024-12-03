@@ -14,8 +14,9 @@ export async function GET(request: NextRequest) {
 
   const clientId = process.env.IGDB_CLIENT_ID;
   const accessToken = await generateApiToken();
+  const API_URL = process.env.IGDB_API_URL;
 
-  if (!clientId) {
+  if (!clientId || !API_URL) {
     return NextResponse.json(
       { error: 'API configuration incomplete' },
       { status: 500 }
@@ -38,7 +39,7 @@ export async function GET(request: NextRequest) {
   `;
 
   try {
-    const response = await fetch('https://api.igdb.com/v4/games', {
+    const response = await fetch(API_URL, {
       method: 'POST',
       headers: headers,
       body: body,
