@@ -1,22 +1,38 @@
 'use client';
+
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import NoGames from '../../../public/images/no-games.svg';
 import Filter from '../filter';
 import GameCard from '../game-card';
 import { useGameStorage } from '@/hooks/useGameStorage';
 import { Game, FilterEnum } from '@/types';
+import Spinner from '../spinner';
 
 function GamesComponent() {
-  const { removeGame, savedGames, filterGames } = useGameStorage();
+  const { isLoading, removeGame, savedGames, filterGames } = useGameStorage();
+  const [removingGameId, setRemovingGameId] = useState<number | null>();
 
   const handleRemoveGame = (id: Game['id']) => {
-    removeGame(id);
+    setRemovingGameId(id);
+
+    setTimeout(() => {
+      removeGame(id);
+      setRemovingGameId(null);
+    }, 300);
   };
 
   const handleFilterChange = (filter: FilterEnum) => {
     filterGames(filter);
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <Spinner />
+      </div>
+    )
+  }
 
   return (
     <div className="">
@@ -40,7 +56,12 @@ function GamesComponent() {
             <Filter onFilterChange={handleFilterChange} />
             <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
               {savedGames.map((g) => (
-                <GameCard key={g.id} game={g} onRemove={handleRemoveGame} />
+                <GameCard 
+                  key={g.id} 
+                  game={g} 
+                  onRemove={handleRemoveGame}
+                  isRemoving={removingGameId === g.id}
+                />
               ))}
             </div>
           </div>
