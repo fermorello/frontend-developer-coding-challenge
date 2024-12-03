@@ -68,7 +68,7 @@ export default function GameSearchComponent() {
       >
         <div className="relative">
           <CommandInput
-            placeholder="Buscar juegos..."
+            placeholder="Search games..."
             className="placeholder:text-pink-200"
             value={searchValue}
             onValueChange={setSearchValue}
