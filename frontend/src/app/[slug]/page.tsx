@@ -20,10 +20,10 @@ interface GameDetailPageProps {
 export async function generateMetadata({
   params,
 }: GameDetailPageProps): Promise<Metadata> {
-  // const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
   const { slug } = await params;
-  const response = await fetch(`/api/game/${slug}`, {
-    // cache: 'force-cache',
+  const response = await fetch(`${baseUrl}/api/game/${slug}`, {
+    cache: 'force-cache',
   });
 
   const game: Game = await response.json();
