@@ -1,3 +1,4 @@
+import { generateApiToken } from '@/lib/getAccessToken';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
@@ -6,23 +7,24 @@ export async function GET(request: NextRequest) {
 
   if (!query) {
     return NextResponse.json(
-      { error: 'Se requiere un término de búsqueda' },
+      { error: 'Seatch term its required. ' },
       { status: 400 }
     );
   }
 
   const clientId = process.env.IGDB_CLIENT_ID;
+  const accessToken = await generateApiToken();
 
   if (!clientId) {
     return NextResponse.json(
-      { error: 'Configuración de API incompleta' },
+      { error: 'API configuration incomplete' },
       { status: 500 }
     );
   }
 
   const headers = {
     'Client-ID': clientId,
-    Authorization: `Bearer ye5axrnvt396ptqwtkfget7zkbotkj`,
+    Authorization: `Bearer ${accessToken.access_token}`,
     'Content-Type': 'text/plain',
   };
 
@@ -44,15 +46,15 @@ export async function GET(request: NextRequest) {
     });
 
     if (!response.ok) {
-      throw new Error('Error en la búsqueda de juegos');
+      throw new Error('Error trying to fetch the game');
     }
 
     const games = await response.json();
     return NextResponse.json(games);
   } catch (error) {
-    console.error('Error en búsqueda de juegos:', error);
+    console.error('Error trying to fetch the game:', error);
     return NextResponse.json(
-      { error: 'No se pudieron obtener los juegos' },
+      { error: 'Could not get the game' },
       { status: 500 }
     );
   }

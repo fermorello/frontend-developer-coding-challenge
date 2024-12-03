@@ -1,3 +1,4 @@
+import { generateApiToken } from '@/lib/getAccessToken';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
@@ -5,29 +6,27 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const slug = (await params).slug;
-
   const [gameName] = slug.split('--');
-
   if (!gameName) {
     return NextResponse.json(
-      { error: 'Slug de juego inválido' },
+      { error: 'Invalid slug game' },
       { status: 400 }
     );
   }
 
   const clientId = process.env.IGDB_CLIENT_ID;
-  // const accessToken = process.env.IGDB_ACCESS_TOKEN;
+  const accessToken = await generateApiToken();
 
   if (!clientId) {
     return NextResponse.json(
-      { error: 'Configuración de API incompleta' },
+      { error: 'Incomplete API Configuration.' },
       { status: 500 }
     );
   }
 
   const headers = {
     'Client-ID': clientId,
-    Authorization: `Bearer ye5axrnvt396ptqwtkfget7zkbotkj`,
+    Authorization: `Bearer ${accessToken.access_token}`,
     'Content-Type': 'text/plain',
   };
 
@@ -62,29 +61,25 @@ export async function GET(
       method: 'POST',
       headers: headers,
       body: body,
-      cache: 'no-store',
+      cache: 'force-cache',
     });
 
     if (!response.ok) {
-      throw new Error('Error en la búsqueda de detalles del juego');
+      throw new Error('Error on game details fetch:');
     }
 
     const games = await response.json();
 
-
     // Si no se encuentra el juego
     if (games.length === 0) {
-      return NextResponse.json(
-        { error: 'Juego no encontrado' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'Game not found' }, { status: 404 });
     }
 
     return NextResponse.json(games[0]);
   } catch (error) {
-    console.error('Error en búsqueda de detalles de juego:', error);
+    console.error('Error on game details fetch:', error);
     return NextResponse.json(
-      { error: 'No se pudieron obtener los detalles del juego' },
+      { error: 'Error trying to get the game details.' },
       { status: 500 }
     );
   }
