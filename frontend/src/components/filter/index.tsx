@@ -28,21 +28,23 @@ export default function Filter({ onFilterChange }: FilterProps) {
       defaultValue={FilterEnum.LAST_ADDED}
       className={`${isSticky ? 'sticky top-2 z-50 flex justify-center' : ''}`}
     >
-      <TabsList className="flex justify-start md:justify-center bg-white backdrop-blur-lg">
-        <TabsTrigger 
-          value={FilterEnum.LAST_ADDED} 
+      <TabsList
+        className={`flex justify-start md:justify-center bg-white backdrop-blur-xl bg-opacity-50`}
+      >
+        <TabsTrigger
+          value={FilterEnum.LAST_ADDED}
           onClick={() => onFilterChange(FilterEnum.LAST_ADDED)}
         >
           Last added
         </TabsTrigger>
-        <TabsTrigger 
-          value={FilterEnum.NEWEST} 
+        <TabsTrigger
+          value={FilterEnum.NEWEST}
           onClick={() => onFilterChange(FilterEnum.NEWEST)}
         >
           Newest
         </TabsTrigger>
-        <TabsTrigger 
-          value={FilterEnum.OLDEST} 
+        <TabsTrigger
+          value={FilterEnum.OLDEST}
           onClick={() => onFilterChange(FilterEnum.OLDEST)}
         >
           Oldest
