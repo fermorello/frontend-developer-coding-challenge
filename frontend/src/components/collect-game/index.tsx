@@ -21,7 +21,7 @@ function CollectGameButton({ game }: CollectGameButtonProps) {
   };
   return (
     <div>
-      <Button onClick={handleCollect} disabled={Boolean(itsCollected)}>
+      <Button onClick={handleCollect} disabled={Boolean(itsCollected)} className='w-full md:w-[135px]'>
         {Boolean(itsCollected) ? 'Game Collected' : 'Collect Game'}
       </Button>
     </div>
