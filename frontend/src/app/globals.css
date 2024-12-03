@@ -109,36 +109,11 @@
   }
 }
 
-body {
+/* body {
   min-height: auto;
-  background-image: url('../../public/images/desktop-bg.png');
+  background-image: url('/images/desktop-bg.png');
   background-position-y: -20%;
   background-repeat: no-repeat;
+  background-size: contain;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-@media (max-width: 1024px) {
-  body {
-    background-image: url('../../public/images/desktop-bg.png');
-    background-repeat: no-repeat;
-    background-position-y: -20%;
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    background-image: url('../../public/images/mobile-bg.png');
-    /* background-size: cover; */
-    background-repeat: no-repeat;
-    background-position-y: -20%;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    background-image: url('../../public/images/mobile-bg.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-y: top;
-  }
-}
+} */
