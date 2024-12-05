@@ -1,161 +1,98 @@
-# Aerolab Coding Challenge (for frontend developers)
+# Solución al Aerolab Frontend Coding Challenge
 
-> Check out our 2022 coding challenge [here](https://github.com/Aerolab/frontend-developer-coding-challenge/tree/2022)
+Este proyecto es mi solución al **Frontend Coding Challenge de Aerolab**. El desafío consistió en crear una aplicación web que permite a los usuarios buscar y coleccionar videojuegos usando la API de IGDB y almacenamiento en el navegador.
 
-* [Overview](#Overview)
-* [Design resources](#Design-resources)
-* [Tech Stack](#Tech-Stack)
-* [IGDB API](#IGDB-API)
-* [Requirements](#Requirements)
-* [Delivery](#Delivery)
-* [About Aerolab and career opportunities](#Aerolab)
+## Despliegue
+La aplicación está desplegada en Vercel, puedes acceder a la demo pública [aquí](https://nombre-de-tu-proyecto.vercel.app).
 
-## Overview
+## Descripción
 
-Your task is to create a web application that allows users to search for and digitally collect video games, using the IGDB API and browser/device storage. The project must be built using the `Next.js App Router` (or even `Expo React Native` if you have enough experience). Styling is flexible, but we recommend using `Tailwind CSS` or `CSS Modules`. The final product should be functional, visually appealing, and provide a great user experience. Feel free to add any extra features or custom styling as you see fit.
+La aplicación permite a los usuarios realizar búsquedas dinámicas de videojuegos, agregar sus juegos favoritos a una colección y ver detalles de cada juego en una página dedicada. He utilizado **Next.js** y **Tailwind CSS** para crear una experiencia fluida, rápida y visualmente atractiva, compatible tanto con dispositivos móviles como de escritorio.
 
-> You’re welcome to use any additional libraries you find helpful for the challenge.
+### Características principales
 
-![image](https://github.com/user-attachments/assets/92b96f68-561e-4326-8e8d-72dec6251b9d)
+- **Búsqueda de videojuegos**: Los usuarios pueden buscar juegos a medida que escriben. Los resultados incluyen la portada y el título del juego.
+- **Colección de juegos**: Los juegos pueden ser agregados a una colección personal. Los usuarios pueden ver los juegos guardados en una cuadrícula.
+- **Página de detalles**: Cada juego tiene su propia página de detalles, mostrando información adicional como la fecha de lanzamiento, calificación y plataformas.
+- **Interacción con la API de IGDB**: Se utiliza la API de IGDB para obtener información sobre los videojuegos.
+- **Responsive**: La aplicación es completamente responsive, asegurando una experiencia optimizada en dispositivos móviles y de escritorio.
+- **Optimización de rendimiento**: Se optimiza el tamaño de las imágenes y la gestión de los estados de carga y error.
 
-## Design resources
+## Tecnologías utilizadas
 
-> [!IMPORTANT]
-> You should prioritize the responsive/mobile design; the desktop design is optional but we expect at least a clean and polished appearance. Access the [Figma design here](https://www.figma.com/design/3O7BxHFnSSawJeny3lXWkE/Aerolab-Frontend-Developer-Coding-Challenge---Public?node-id=16996-5165&t=uLiMR18T28Jegm4s-4) to complete the challenge.
+- **Next.js**: Framework de React para renderizado en el lado del servidor (SSR) y enrutamiento.
+- **Tailwind CSS**: Framework de CSS para una rápida y flexible creación de interfaces.
+- **TypeScript**: Para asegurar la seguridad de tipos y mejorar la mantenibilidad del código.
+- **IGDB API**: Utilizada para obtener información sobre los videojuegos.
+- **Vercel**: Despliegue en producción.
 
-## Tech Stack
+## Instalación y ejecución local
 
-We recommend using the following technologies to align with the tools we use at Aerolab and to ensure an efficient and scalable solution for this challenge. These tools will help you meet performance, usability, and maintainability standards:
+Sigue estos pasos para ejecutar el proyecto en tu máquina local:
 
+1. **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/tu-usuario/aerolab-coding-challenge.git
+   cd aerolab-coding-challenge
+    ```
+2. **Instala las dependencias:**
+    ```
+    npm install
+    ```
+3. **Configura las variables de entorno: Crea un archivo .env.local en la raíz del proyecto con tu clave de API de IGDB:**
+   ```
+     IGDB_CLIENT_ID=
+     IGDB_CLIENT_SECRET=
+     IGDB_API_URL=
+     NEXT_PUBLIC_URL=
+   ```
+4. **Ejecuta la aplicación:**
+   ```
+     npm run dev
+   ```
+5. **Accede a la aplicación en tu navegador:** Navega a http://localhost:3000.
 
-### Recommended Tools
-- `TypeScript` for type safety and data modeling.
-- `Next.js` (App Router) for server-side rendering and routing. (or Expo React Native)
-- Tailwind CSS or CSS Modules for styling.
-- `Radix`, `shadcn`, `NextUI`, `MagicUI`, `MUI` for UI components.
-- `Vercel` for deployment.
-- `Postman` or `HTTPie` for API request testing.
-- (Optional) `React Testing Library` for testing.
-- (Optional) Yes, you can use `AI` to enhance any part of the project, or even integrate it into your solution.
+## Estructura del proyecto
 
-> [!IMPORTANT]
-> If you feel free and have enouth experience to make the challenge with `React Native`, please use `Expo`. 
+```
+/frontend
+│
+├── /public
+├── /src
+    ├── /app
+    ├── /components
+    ├── /entities
+    ├── /hooks
+    ├── /lib
+    ├── /types
+```
 
-## IGDB API
+## Características implementadas
 
-### API Account Setup
-- Sign up at [IGDB](https://www.igdb.com/)
-- Review the [IGDB API Documentation](https://api-docs.igdb.com/#getting-started)
+### Página de inicio:
+- Barra de búsqueda para encontrar videojuegos.
+- Visualización de los juegos añadidos a la colección.
+- Vista de cuadrícula de las portadas de los juegos.
+- Ordenamiento de juegos por fecha de lanzamiento y por fecha de adición a la colección.
 
-### Useful Tips
-- To fetch images, use the structure `https://images.igdb.com/igdb/image/upload/t_{size}/{hash}.jpg`
-- For available image sizes and details, see [IGDB Image Documentation](https://api-docs.igdb.com/#images).
-- The challenge can be solved using only the `/games` endpoint.
-- When working with game release dates, just use `first_release_date` property.
-- You can filter, exclude and sort data using the API, see [IGDB Filter Documentation](https://api-docs.igdb.com/#filters)
+### Página de detalles del juego:
+- Información sobre el juego: portada, título, rating, fecha de lanzamiento y plataformas.
+- Opción para agregar o eliminar el juego de la colección.
+- Pantalla de imágenes y lista de juegos similares.
+- URL amigable con slugs en lugar de IDs.
 
-## Requirements
+### Responsividad:
+- La aplicación se adapta correctamente a pantallas de móviles, tabletas y escritorios.
 
-Your project should let users search for video games via the IGDB API and save selected games to a collection using browser or device storage. It must be fully responsive, handle loading states and errors properly, and give clear feedback for user actions like adding or removing games.
+### Optimización:
+- Carga eficiente de imágenes mediante el uso de tamaños adecuados.
+- Control de errores y manejo de estados de carga.
 
-The design should look polished, with consistent styling throughout. Remember, code quality matters—simply meeting the criteria isn’t enough. Show off your skills and creativity! 💪
-
-### General
-- The website must be fully functional on both desktop and mobile devices.
-- (Optional) Open Graph metadata should appear when sharing any URL.
-- (Optional) Dynamic Open Graph metadata should be present when sharing a game detail page.
-
-### Home Page
-- The logo should be visible and clickable, returning the user to the home screen.
-- Users should be able to search for games using a search input.
-- If no games have been collected, an empty state should be displayed.
-- Collected games should be shown as cover art in a grid layout, with sorting options by release date or date added.
-- When a collected game is clicked, the user should be redirected to the game's detail page.
-- (Optional) Users should be able to remove collected games.
-
-### Search Feature
-- Search results should update dynamically as the user types. Be mindful of IGDB API rate limits, so ensure efficient handling of real-time searches.
-- Each result should include the game’s cover art and title.
-- (Optional) Clicking on the input before typing should display suggested results.
-- Users should be able to browse 5–10 results via the search input (if available).
-- (Optional) Up to 50 search results should be shown (if available).
-- Clicking a result should navigate the user to the game detail page.
-
-### Game Detail Page
-- The logo should be visible and clickable, returning the user to the home screen.
-- Users should be able to search for games via an input on this page.
-- The page must display the game's cover art, title, rating, release date, platforms, and how many years ago it was released.
-- Users should be able to collect the game and see if it's already collected.
-- (Optional) Collected games should be removable, with notifications for adding or removing games.
-- Screenshots of the game should be displayed, along with a list of similar games.
-- (Optional) Users should be able to click on each similar game and navigate to an internal link.
-- The URL should use a friendly slug format instead of an ID.
-
-### Extra Considerations
-- Incorporate visual enhancements like animations and micro-interactions.
-- Prioritize performance (optimize images, web vitals, and network usage).
-- Ensure SEO best practices (metadata, semantic markup, SSR).
-- Focus on accessibility (keyboard navigation, screen reader support, semantic HTML).
-- Protect environment variables and sensitive data.
-- (Optional) Implement a login system with Supabase or similar.
-- (Optional) Add unit or integration tests.
-
-## Delivery
-
-This needs to ship. You should upload the project to a public link (we recommend [Vercel](https://vercel.com/)). You should also upload it to Github so we can review the code.
-
-In case you need a hand in getting your site to go live, we recommend you read the [Vercel Docs](https://vercel.com/docs/concepts/deployments/overview) to help you out.
-
-🚀 Once your code is ready send the public link and repository link via email to whoever sent it to you from Aerolab, or you can apply at https://aerolab.co/jobs if you got here some other way.
-
-### Expected Deliverables
-
-- A live, deployed demo of the project.
-- Access to the codebase via a public repository.
-- (optional) API request collection (using Postman or HTTPie).
-
-### Evaluation Criteria
-
-- Understanding and implementation of API requests, payloads, and documentation.
-- Effective data and state management.
-- Search functionality and user interaction handling.
-- Website performance, including asset optimization, payload size, and loading times.
-- Project documentation (codebase, readme, etc.)
-- Project metadata (open graph, sitemap, favicons, etc.)
-
-## Aerolab
-
-Aerolab is a Digital Product Studio based in Buenos Aires, Argentina.
-
-We design and develop top-tier websites and apps for startups and leading brands.
-
-Our goal is to find talented, creative developers.
-
-For us, this challenge is a fun way of reaching devs and testing out their skills.
-
-We are remote-first!
-
-## Aerolab careers opportunities
-
-### 👩‍💻 Are your looking for a remote developer job?
-
-We are open to work! We have remote positions for Frontend and Fullstack developers but also there are positions for Product Designers, Project Managers and more! Feel free to apply at https://aerolab.co/jobs
-
-## Follow us!
-
-Follow Aerolab on social networks
-
-- [Twitter](https://twitter.com/aerolab)
-- [Instagram](https://www.instagram.com/aerolab/)
-- [Dribbble](https://dribbble.com/aerolab)
-- [Behance](https://www.behance.net/aerolab)
-- [Linkedin](https://www.linkedin.com/company/aerolab-digital)
-
-About Us
-
-- [See our case studies](https://aerolab.co/projects)
-- [Read our articles](https://medium.com/aerolab-stories)
-- [Know more about our experience](https://aerolab.co/expertise)
-- [Visit our website](https://aerolab.co/)
-
-🪁
+### Accesibilidad:
+- Navegación por teclado y soporte básico para lectores de pantalla.
+  
+## Posibles mejoras futuras
+- **Autenticación de usuario**: Implementar un sistema de login utilizando una solución como Supabase o Firebase para que los usuarios puedan guardar su colección en diferentes dispositivos.
+- **Mejoras en la búsqueda**: Incluir un sistema de autocompletado o sugerencias basadas en los términos de búsqueda.
+- **Pruebas unitarias**: Agregar más pruebas con React Testing Library para asegurar que los componentes clave funcionen correctamente.
+- **Animaciones y microinteracciones**: Mejorar la interfaz con animaciones sutiles para hacerla más atractiva.
