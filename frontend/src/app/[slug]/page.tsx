@@ -1,15 +1,16 @@
-import Chip from '@/components/chip';
-import GameSearchComponent from '@/components/searchbar';
-import { Game } from '@/types';
-import { Calendar, Puzzle, Star } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import dayjs from 'dayjs';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Game } from '@/types';
+import { Metadata } from 'next';
+import Chip from '@/components/chip';
+import { Calendar, Puzzle, Star } from 'lucide-react';
+import GameSearchComponent from '@/components/searchbar';
 import BackNavigation from '@/components/back-navigation';
 import CollectGameButton from '@/components/collect-game';
-import { Metadata } from 'next';
 import MediaCarousel from '@/components/mobile-media-carousel';
+import Logo from '@/components/logo';
 
 interface GameDetailPageProps {
   params: {
@@ -44,7 +45,7 @@ async function GameDetailPage({ params }: GameDetailPageProps) {
   const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
   const { slug } = await params;
   const response = await fetch(`${baseUrl}/api/game/${slug}`, {
-    cache: 'force-cache',
+    cache: 'default',
   });
 
   if (!response.ok) {
@@ -54,7 +55,12 @@ async function GameDetailPage({ params }: GameDetailPageProps) {
   const game: Game = await response.json();
 
   return (
-    <div className="bg-[url('/images/mobile-bg.png')] md:bg-[url('/images/desktop-bg.png')] bg-no-repeat bg-contain md:bg-[0px_-8%] ">
+    <div className="relative bg-[url('/images/mobile-bg.png')] md:bg-[url('/images/desktop-bg.png')] bg-no-repeat bg-contain md:bg-[0px_-8%] ">
+      <div className="fixed bottom-5 right-2 md:right-5 cursor-pointer">
+        <Link href="/">
+          <Logo size={34} />
+        </Link>
+      </div>
       <div className="w-full md:max-w-[728px] py-20 px-4 lg:m-auto">
         <div className="flex flex-col items-start">
           <div className="flex flex-col md:flex-row md:items-center gap-4 lg:gap-24">
