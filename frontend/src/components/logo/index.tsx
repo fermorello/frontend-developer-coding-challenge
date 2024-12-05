@@ -3,7 +3,7 @@ import Image from 'next/image';
 import MyLogo from '../../../public/images/Frame.svg';
 
 interface LogoProps {
-  size: number;
+  size?: number;
 }
 
 const Logo = ({ size = 24 }: LogoProps) => (

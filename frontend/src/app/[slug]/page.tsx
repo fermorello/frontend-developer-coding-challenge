@@ -13,9 +13,7 @@ import MediaCarousel from '@/components/mobile-media-carousel';
 import Logo from '@/components/logo';
 
 interface GameDetailPageProps {
-  params: {
-    slug: Promise<string>;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({
