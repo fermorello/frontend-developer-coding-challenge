@@ -1,58 +1,56 @@
-# Solución al Aerolab Frontend Coding Challenge
+# Solution to the Aerolab Frontend Coding Challenge
 
-Este proyecto es mi solución al **Frontend Coding Challenge de Aerolab**. El desafío consistió en crear una aplicación web que permite a los usuarios buscar y coleccionar videojuegos usando la API de IGDB y almacenamiento en el navegador.
+This project is my solution to the **Aerolab Frontend Coding Challenge**. The challenge consisted of creating a web application that allows users to search and collect video games using the IGDB API and browser storage.
 
-## Despliegue
-La aplicación está desplegada en Vercel, puedes acceder a la demo pública [aquí](https://nombre-de-tu-proyecto.vercel.app).
+## Deployment
+The application is deployed on Vercel, and you can access the public demo [here](https://your-project-name.vercel.app).
 
-## Descripción
+## Description
 
-La aplicación permite a los usuarios realizar búsquedas dinámicas de videojuegos, agregar sus juegos favoritos a una colección y ver detalles de cada juego en una página dedicada. He utilizado **Next.js** y **Tailwind CSS** para crear una experiencia fluida, rápida y visualmente atractiva, compatible tanto con dispositivos móviles como de escritorio.
+The app allows users to perform dynamic searches for video games, add their favorite games to a collection, and view detailed information about each game on a dedicated page. I used **Next.js** and **Tailwind CSS** to create a smooth, fast, and visually appealing experience, optimized for both mobile and desktop devices.
 
-### Características principales
+### Key Features
 
-- **Búsqueda de videojuegos**: Los usuarios pueden buscar juegos a medida que escriben. Los resultados incluyen la portada y el título del juego.
-- **Colección de juegos**: Los juegos pueden ser agregados a una colección personal. Los usuarios pueden ver los juegos guardados en una cuadrícula.
-- **Página de detalles**: Cada juego tiene su propia página de detalles, mostrando información adicional como la fecha de lanzamiento, calificación y plataformas.
-- **Interacción con la API de IGDB**: Se utiliza la API de IGDB para obtener información sobre los videojuegos.
-- **Responsive**: La aplicación es completamente responsive, asegurando una experiencia optimizada en dispositivos móviles y de escritorio.
-- **Optimización de rendimiento**: Se optimiza el tamaño de las imágenes y la gestión de los estados de carga y error.
+- **Video Game Search**: Users can search for games as they type. The results display the game’s cover and title.
+- **Game Collection**: Games can be added to a personal collection. Users can view their saved games in a grid.
+- **Game Details Page**: Each game has its own details page showing additional information such as release date, rating, and platforms.
+- **IGDB API Integration**: The IGDB API is used to fetch information about the video games.
+- **Responsive Design**: The application is fully responsive, ensuring an optimized experience on both mobile and desktop devices.
+- **Performance Optimization**: The app optimizes image sizes and manages loading and error states efficiently.
 
-## Tecnologías utilizadas
+## Technologies Used
 
-- **Next.js**: Framework de React para renderizado en el lado del servidor (SSR) y enrutamiento.
-- **Tailwind CSS**: Framework de CSS para una rápida y flexible creación de interfaces.
-- **TypeScript**: Para asegurar la seguridad de tipos y mejorar la mantenibilidad del código.
-- **IGDB API**: Utilizada para obtener información sobre los videojuegos.
-- **Vercel**: Despliegue en producción.
+- **Next.js**: React framework for server-side rendering (SSR) and routing.
+- **Tailwind CSS**: CSS framework for fast and flexible UI design.
+- **TypeScript**: Ensures type safety and improves code maintainability.
+- **IGDB API**: Used to fetch video game data.
+- **Vercel**: Used for production deployment.
 
-## Instalación y ejecución local
+## Installation and Running Locally
 
-Sigue estos pasos para ejecutar el proyecto en tu máquina local:
+Follow these steps to run the project locally on your machine:
 
-1. **Clona el repositorio**:
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/tu-usuario/aerolab-coding-challenge.git
+   git clone https://github.com/your-username/aerolab-coding-challenge.git
    cd aerolab-coding-challenge
-    ```
-2. **Instala las dependencias:**
+2. **Install dependencies:**
     ```
     npm install
     ```
-3. **Configura las variables de entorno: Crea un archivo .env.local en la raíz del proyecto con tu clave de API de IGDB:**
-   ```
+3. **Configure environment variables: Create a .env.local file at the root of the project with the following keys**
      IGDB_CLIENT_ID=
      IGDB_CLIENT_SECRET=
      IGDB_API_URL=
      NEXT_PUBLIC_URL=
    ```
-4. **Ejecuta la aplicación:**
+4. **Run the application:**
    ```
      npm run dev
    ```
-5. **Accede a la aplicación en tu navegador:** Navega a http://localhost:3000.
+5. **Access the application in your browser:** Navigate to http://localhost:3000.
 
-## Estructura del proyecto
+## Project Structure
 
 ```
 /frontend
@@ -67,32 +65,33 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
     ├── /types
 ```
 
-## Características implementadas
+## Implemented Features
 
-### Página de inicio:
-- Barra de búsqueda para encontrar videojuegos.
-- Visualización de los juegos añadidos a la colección.
-- Vista de cuadrícula de las portadas de los juegos.
-- Ordenamiento de juegos por fecha de lanzamiento y por fecha de adición a la colección.
+### Home Page:
+- Search bar to find video games.
+- Display of games added to the collection.
+- Grid view of game covers.
+- Sorting games by release date and by date added to the collection.
 
-### Página de detalles del juego:
-- Información sobre el juego: portada, título, rating, fecha de lanzamiento y plataformas.
-- Opción para agregar o eliminar el juego de la colección.
-- Pantalla de imágenes y lista de juegos similares.
-- URL amigable con slugs en lugar de IDs.
+### Game Details Page:
+- Game information: cover, title, rating, release date, and platforms.
+- Option to add or remove the game from the collection.
+- Image gallery and list of similar games.
+- User-friendly URLs with slugs instead of IDs.
 
-### Responsividad:
-- La aplicación se adapta correctamente a pantallas de móviles, tabletas y escritorios.
+### Responsiveness:
+- The application adapts correctly to mobile, tablet, and desktop screen sizes.
 
-### Optimización:
-- Carga eficiente de imágenes mediante el uso de tamaños adecuados.
-- Control de errores y manejo de estados de carga.
+### Optimization:
+- Efficient image loading using appropriate sizes.
+- Error handling and load state management.
 
-### Accesibilidad:
-- Navegación por teclado y soporte básico para lectores de pantalla.
-  
-## Posibles mejoras futuras
-- **Autenticación de usuario**: Implementar un sistema de login utilizando una solución como Supabase o Firebase para que los usuarios puedan guardar su colección en diferentes dispositivos.
-- **Mejoras en la búsqueda**: Incluir un sistema de autocompletado o sugerencias basadas en los términos de búsqueda.
-- **Pruebas unitarias**: Agregar más pruebas con React Testing Library para asegurar que los componentes clave funcionen correctamente.
-- **Animaciones y microinteracciones**: Mejorar la interfaz con animaciones sutiles para hacerla más atractiva.
+### Accessibility:
+- Keyboard navigation and basic screen reader support.
+
+## Future Improvements
+- **User Authentication**: Implement a login system using a solution like Supabase or Firebase, so users can save their collection across devices.
+- **Search Enhancements**: Include an autocomplete or suggestion system based on search terms.
+- **Unit Testing**: Add more tests with React Testing Library to ensure key components function correctly.
+- **Animations and Micro-Interactions**: Enhance the interface with subtle animations to make it more engaging.
+
