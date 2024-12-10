@@ -1,4 +1,4 @@
-import { cache } from 'react';
+import { cache } from '../../react-cache-shim'
 
 interface TwitchTokenResponse {
   access_token: string;

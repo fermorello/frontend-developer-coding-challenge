@@ -94,3 +94,4 @@ Follow these steps to run the project locally on your machine:
 - **Search Enhancements**: Include an autocomplete or suggestion system based on search terms.
 - **Unit Testing**: Add more tests with React Testing Library to ensure key components function correctly.
 - **Animations and Micro-Interactions**: Enhance the interface with subtle animations to make it more engaging.
+
