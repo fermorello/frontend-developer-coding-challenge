@@ -3,7 +3,7 @@
 This project is my solution to the **Aerolab Frontend Coding Challenge**. The challenge consisted of creating a web application that allows users to search and collect video games using the IGDB API and browser storage.
 
 ## Deployment
-The application is deployed on Vercel, and you can access the public demo [here](https://your-project-name.vercel.app).
+The application is deployed on Vercel, and you can access the public demo [here](https://aerolab-game-manager.vercel.app).
 
 ## Description
 
