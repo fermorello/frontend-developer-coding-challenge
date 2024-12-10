@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Solution to the Aerolab Frontend Coding Challenge
 
-## Getting Started
+This project is my solution to the **Aerolab Frontend Coding Challenge**. The challenge consisted of creating a web application that allows users to search and collect video games using the IGDB API and browser storage.
 
-First, run the development server:
+## Deployment
+The application is deployed on Vercel, and you can access the public demo [here](https://your-project-name.vercel.app).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Description
+
+The app allows users to perform dynamic searches for video games, add their favorite games to a collection, and view detailed information about each game on a dedicated page. I used **Next.js** and **Tailwind CSS** to create a smooth, fast, and visually appealing experience, optimized for both mobile and desktop devices.
+
+### Key Features
+
+- **Video Game Search**: Users can search for games as they type. The results display the game’s cover and title.
+- **Game Collection**: Games can be added to a personal collection. Users can view their saved games in a grid.
+- **Game Details Page**: Each game has its own details page showing additional information such as release date, rating, and platforms.
+- **IGDB API Integration**: The IGDB API is used to fetch information about the video games.
+- **Responsive Design**: The application is fully responsive, ensuring an optimized experience on both mobile and desktop devices.
+- **Performance Optimization**: The app optimizes image sizes and manages loading and error states efficiently.
+
+## Technologies Used
+
+- **Next.js**: React framework for server-side rendering (SSR) and routing.
+- **Tailwind CSS**: CSS framework for fast and flexible UI design.
+- **TypeScript**: Ensures type safety and improves code maintainability.
+- **IGDB API**: Used to fetch video game data.
+- **Vercel**: Used for production deployment.
+
+## Installation and Running Locally
+
+Follow these steps to run the project locally on your machine:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/aerolab-coding-challenge.git
+   cd aerolab-coding-challenge
+2. **Install dependencies:**
+    ```
+    npm install
+    ```
+3. **Configure environment variables: Create a .env.local file at the root of the project with the following keys**
+     IGDB_CLIENT_ID=
+     IGDB_CLIENT_SECRET=
+     IGDB_API_URL=
+     NEXT_PUBLIC_URL=
+   ```
+4. **Run the application:**
+   ```
+     npm run dev
+   ```
+5. **Access the application in your browser:** Navigate to http://localhost:3000.
+
+## Project Structure
+
+```
+/frontend
+│
+├── /public
+├── /src
+    ├── /app
+    ├── /components
+    ├── /entities
+    ├── /hooks
+    ├── /lib
+    ├── /types
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Implemented Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Home Page:
+- Search bar to find video games.
+- Display of games added to the collection.
+- Grid view of game covers.
+- Sorting games by release date and by date added to the collection.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Game Details Page:
+- Game information: cover, title, rating, release date, and platforms.
+- Option to add or remove the game from the collection.
+- Image gallery and list of similar games.
+- User-friendly URLs with slugs instead of IDs.
 
-## Learn More
+### Responsiveness:
+- The application adapts correctly to mobile, tablet, and desktop screen sizes.
 
-To learn more about Next.js, take a look at the following resources:
+### Optimization:
+- Efficient image loading using appropriate sizes.
+- Error handling and load state management.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Accessibility:
+- Keyboard navigation and basic screen reader support.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future Improvements
+- **User Authentication**: Implement a login system using a solution like Supabase or Firebase, so users can save their collection across devices.
+- **Search Enhancements**: Include an autocomplete or suggestion system based on search terms.
+- **Unit Testing**: Add more tests with React Testing Library to ensure key components function correctly.
+- **Animations and Micro-Interactions**: Enhance the interface with subtle animations to make it more engaging.
