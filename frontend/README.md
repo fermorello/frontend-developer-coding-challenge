@@ -32,8 +32,8 @@ Follow these steps to run the project locally on your machine:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/aerolab-coding-challenge.git
-   cd aerolab-coding-challenge
+   git clone https://github.com/fermorello/frontend-developer-coding-challenge.git
+   cd frontend
 2. **Install dependencies:**
     ```
     npm install
